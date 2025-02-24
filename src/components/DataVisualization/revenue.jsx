@@ -1,6 +1,6 @@
 import { Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import {
-  getMonthlyRevenueData,
+  getMonthWiseRevenueData,
   getRevenueMonths,
   revenueData,
 } from "../../utils/dummyData";
@@ -19,14 +19,6 @@ const colorShades = [
   "#FF9DA7",
 ];
 
-// const DROPDOWN_KEY = [
-//   {
-//     text: "All",
-//     value: "all",
-//   },
-//   {},
-// ];
-
 const RevenueChart = () => {
   const { currencyValue } = useContext(CurrencyContext);
   const [selectedMonth, setSelectedMonth] = useState("All");
@@ -35,10 +27,11 @@ const RevenueChart = () => {
     const data =
       selectedMonth === "All"
         ? revenueData
-        : getMonthlyRevenueData(selectedMonth);
+        : getMonthWiseRevenueData(selectedMonth);
+
     return data.map((data, index) => ({
       ...data,
-      amount: data?.amount * currencyValue,
+      amount: data?.amount * currencyValue, // converting curreny
       fill: `${colorShades[index]}`,
       stroke: `${colorShades[index]}`,
     }));

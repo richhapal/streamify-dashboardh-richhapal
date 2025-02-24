@@ -1,26 +1,3 @@
-// const cartData = {
-//   labels,
-//   datasets: [
-//     {
-//       label: "Active Users",
-//       data: activeUsersData,
-//       backgroundColor: "rgba(75, 192, 192, 0.5)",
-//       borderColor: "rgba(75, 192, 192, 1)",
-//       borderWidth: 2,
-//       fill: true,
-//       pointRadius: 4,
-//     },
-//     {
-//       label: "Total Users",
-//       data: usersData,
-//       backgroundColor: "rgba(255, 99, 132, 0.5)",
-//       borderColor: "rgba(255, 99, 132, 1)",
-//       borderWidth: 2,
-//       fill: true,
-//       pointRadius: 4,
-//     },
-//   ],
-// };
 import {
   LineChart,
   Line,
@@ -45,7 +22,6 @@ const UserGrowth = () => {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="month" padding={{ left: 30, right: 30 }} />
-            {/* <YAxis /> */}
             <Tooltip />
             <Legend />
             <Line

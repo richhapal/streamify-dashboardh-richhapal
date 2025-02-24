@@ -23,7 +23,7 @@ const KeyMatricsCard = (props) => {
     () => (title === "Total Revenue" ? value * currencyValue : value),
     [value, currencyValue]
   );
-  console.log("amount", amount);
+
   return (
     <div className="rounded-2xl shadow-sm border border-[#e5e7eb] p-4 flex flex-col justify-between hover:border-accent/50 overflow-hidden relative  ">
       <div>

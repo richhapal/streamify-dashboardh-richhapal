@@ -190,7 +190,7 @@ export const getRevenueMonths = Object.keys(revenueDataMonthly);
 
 export const revenueData = generateRevenueData(revenueDataMonthly);
 
-export const getMonthlyRevenueData = (month) => {
+export const getMonthWiseRevenueData = (month) => {
   const monthlyData = revenueDataMonthly[month];
   const result = [];
   for (const source in monthlyData) {
