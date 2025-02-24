@@ -1,9 +1,12 @@
+import CurrencySelector from "../GenericComponent/CurrencySelector";
+
 const Header = () => {
   return (
-    <div className="navbar p-3 w-full min-h-12 border-b dark:border-neutral-700/70 flex items-center ">
-      <span className="uppercase font-bold text-accent tracking-wide text-xl flex gap-1 items-center">
+    <div className=" p-3 w-full min-h-12 flex items-center shadow-lg shadow-b-lg justify-between">
+      <span className="uppercase font-bold text-xl flex gap-1 text-[#ff3434] ">
         Steamify Dashboard
       </span>
+      <CurrencySelector />
     </div>
   );
 };

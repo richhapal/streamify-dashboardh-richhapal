@@ -1,8 +1,15 @@
 import "./App.css";
 import MainLayout from "./components";
+import { Theme } from "@radix-ui/themes";
 
 function App() {
-  return <MainLayout />;
+  return (
+    <>
+      <Theme>
+        <MainLayout />
+      </Theme>
+    </>
+  );
 }
 
 export default App;
