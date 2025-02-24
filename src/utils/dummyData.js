@@ -27,11 +27,6 @@ export const mostStreamedSongsLast30Days = [
   },
   { artist: "Justin Bieber", song: "Peaches", totalStreams: "590876543" },
   { artist: "Travis Scott", song: "Sicko Mode", totalStreams: "478654321" },
-  {
-    artist: "The Kid LAROI & Justin Bieber",
-    song: "Stay",
-    totalStreams: "745678901",
-  },
   { artist: "Sam Smith", song: "Unholy", totalStreams: "215765432" },
   { artist: "Doja Cat", song: "Say So", totalStreams: "342876543" },
   { artist: "Camila Cabello", song: "Havana", totalStreams: "205876543" },
