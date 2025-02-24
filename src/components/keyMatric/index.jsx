@@ -1,5 +1,5 @@
 import { keyMatricsData } from "../../utils/dummyData";
-import KeyMatricsCard from "./card";
+import KeyMatricsCard from "./matricsCard";
 
 const KeyMatrics = () => {
   return (

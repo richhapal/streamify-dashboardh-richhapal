@@ -1,5 +1,3 @@
-// const TitleIcon = {};
-
 import { Landmark, MicVocal, RadioTower, UserCheck, Users } from "lucide-react";
 import TopArtist from "./topArtist";
 import {
