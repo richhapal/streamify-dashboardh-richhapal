@@ -69,17 +69,135 @@ export const userGrowthData = [
   { month: "Sep", year: "2025", "Active Users": 10775, "Total Users": 54560 },
 ];
 
-export const revenueData = [
-  { source: "Advertising", amount: 46003430.75 },
-  { source: "Subscriptions", amount: 672351890.15 },
-  { source: "Rentals", amount: 143322980.4 },
-  {
-    source: "Partnerships and Sponsorships",
-    amount: 145294300.2,
+export const revenueDataMonthly = {
+  Jan: {
+    Advertising: 43430.75,
+    Subscriptions: 61890.15,
+    Rentals: 142980.4,
+    "Partnerships and Sponsorships": 1494300.2,
+    "Merchandise Sales": 772800.95,
+    "Ticket Sales": 3242000.45,
   },
-  { source: "Merchandise Sales", amount: 77822800.95 },
-  { source: "Ticket Sales", amount: 351242000.45 },
-];
+  Feb: {
+    Advertising: 40430.75,
+    Subscriptions: 673890.15,
+    Rentals: 1422980.4,
+    "Partnerships and Sponsorships": 14300.2,
+    "Merchandise Sales": 78000.95,
+    "Ticket Sales": 512000.45,
+  },
+  Mar: {
+    Advertising: 45430.75,
+    Subscriptions: 683890.15,
+    Rentals: 1522980.4,
+    "Partnerships and Sponsorships": 15300.2,
+    "Merchandise Sales": 79000.95,
+    "Ticket Sales": 522000.45,
+  },
+  Apr: {
+    Advertising: 46430.75,
+    Subscriptions: 693890.15,
+    Rentals: 1622980.4,
+    "Partnerships and Sponsorships": 16300.2,
+    "Merchandise Sales": 80000.95,
+    "Ticket Sales": 532000.45,
+  },
+  May: {
+    Advertising: 47430.75,
+    Subscriptions: 703890.15,
+    Rentals: 1722980.4,
+    "Partnerships and Sponsorships": 17300.2,
+    "Merchandise Sales": 81000.95,
+    "Ticket Sales": 542000.45,
+  },
+  Jun: {
+    Advertising: 48430.75,
+    Subscriptions: 713890.15,
+    Rentals: 1822980.4,
+    "Partnerships and Sponsorships": 18300.2,
+    "Merchandise Sales": 82000.95,
+    "Ticket Sales": 552000.45,
+  },
+  Jul: {
+    Advertising: 49430.75,
+    Subscriptions: 723890.15,
+    Rentals: 1922980.4,
+    "Partnerships and Sponsorships": 19300.2,
+    "Merchandise Sales": 83000.95,
+    "Ticket Sales": 562000.45,
+  },
+  Aug: {
+    Advertising: 50430.75,
+    Subscriptions: 733890.15,
+    Rentals: 2022980.4,
+    "Partnerships and Sponsorships": 20300.2,
+    "Merchandise Sales": 84000.95,
+    "Ticket Sales": 572000.45,
+  },
+  Sep: {
+    Advertising: 51430.75,
+    Subscriptions: 743890.15,
+    Rentals: 2122980.4,
+    "Partnerships and Sponsorships": 21300.2,
+    "Merchandise Sales": 85000.95,
+    "Ticket Sales": 582000.45,
+  },
+  Oct: {
+    Advertising: 52430.75,
+    Subscriptions: 753890.15,
+    Rentals: 2222980.4,
+    "Partnerships and Sponsorships": 22300.2,
+    "Merchandise Sales": 86000.95,
+    "Ticket Sales": 592000.45,
+  },
+  Nov: {
+    Advertising: 53430.75,
+    Subscriptions: 763890.15,
+    Rentals: 2322980.4,
+    "Partnerships and Sponsorships": 23300.2,
+    "Merchandise Sales": 87000.95,
+    "Ticket Sales": 602000.45,
+  },
+  Dec: {
+    Advertising: 54430.75,
+    Subscriptions: 773890.15,
+    Rentals: 2422980.4,
+    "Partnerships and Sponsorships": 24300.2,
+    "Merchandise Sales": 88000.95,
+    "Ticket Sales": 612000.45,
+  },
+};
+
+const generateRevenueData = (monthlyData) => {
+  const revenueData = [];
+  for (const month in monthlyData) {
+    for (const source in monthlyData[month]) {
+      const existingSource = revenueData.find((item) => item.source === source);
+      if (existingSource) {
+        existingSource.amount += monthlyData[month][source];
+      } else {
+        revenueData.push({
+          source,
+          amount: monthlyData[month][source],
+        });
+      }
+    }
+  }
+  return revenueData;
+};
+
+export const getRevenueMonths = Object.keys(revenueDataMonthly);
+
+export const revenueData = generateRevenueData(revenueDataMonthly);
+
+export const getMonthlyRevenueData = (month) => {
+  const monthlyData = revenueDataMonthly[month];
+  const result = [];
+  for (const source in monthlyData) {
+    result.push({ source, amount: monthlyData[source] });
+  }
+  return result;
+};
 
 const getTotalRevenue = () =>
   revenueData.reduce((acc, item) => acc + item.amount, 0);

@@ -8,11 +8,11 @@ export const CurrencyProvider = ({ children }) => {
 
   const updateCurrencyValue = (newCurrency) => {
     if (newCurrency === "INR") {
-      setCurrencyValue(74); // Example conversion rate
+      setCurrencyValue(74);
     } else if (newCurrency === "EUR") {
-      setCurrencyValue(0.85); // Example conversion rate
+      setCurrencyValue(0.85);
     } else {
-      setCurrencyValue(1); // Default to USD
+      setCurrencyValue(1);
     }
   };
 

@@ -1,7 +1,12 @@
 import { Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
-import { revenueData } from "../../utils/dummyData";
-import { useContext, useMemo } from "react";
+import {
+  getMonthlyRevenueData,
+  getRevenueMonths,
+  revenueData,
+} from "../../utils/dummyData";
+import { useContext, useMemo, useState } from "react";
 import { CurrencyContext } from "../../context";
+import { Button, DropdownMenu } from "@radix-ui/themes";
 
 const colorShades = [
   "#4E79A7",
@@ -14,21 +19,55 @@ const colorShades = [
   "#FF9DA7",
 ];
 
+// const DROPDOWN_KEY = [
+//   {
+//     text: "All",
+//     value: "all",
+//   },
+//   {},
+// ];
+
 const RevenueChart = () => {
   const { currencyValue } = useContext(CurrencyContext);
+  const [selectedMonth, setSelectedMonth] = useState("All");
 
   const chartData = useMemo(() => {
-    return revenueData.map((data, index) => ({
+    const data =
+      selectedMonth === "All"
+        ? revenueData
+        : getMonthlyRevenueData(selectedMonth);
+    return data.map((data, index) => ({
       ...data,
       amount: data?.amount * currencyValue,
       fill: `${colorShades[index]}`,
       stroke: `${colorShades[index]}`,
     }));
-  }, [currencyValue]);
+  }, [currencyValue, selectedMonth]);
+
+  const handleSelect = (item) => {
+    setSelectedMonth(item);
+  };
 
   return (
     <div className="border border-[#e5e7eb] rounded-2xl p-3">
-      <div className="font-medium ">Revenue</div>
+      <div className="font-medium  ">Revenue</div>
+      <div className="w-full flex items-center justify-end">
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger color="gray" variant="soft" highContrast>
+            <Button>
+              {selectedMonth}
+              <DropdownMenu.TriggerIcon />
+            </Button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content color="gray" variant="soft" highContrast>
+            {["All", ...getRevenueMonths].map((item) => (
+              <DropdownMenu.Item key={item} onSelect={() => handleSelect(item)}>
+                {item}
+              </DropdownMenu.Item>
+            ))}
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+      </div>
       <div>
         <ResponsiveContainer width={"100%"} height={300}>
           <PieChart>
