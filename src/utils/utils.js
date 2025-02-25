@@ -4,7 +4,7 @@ export const formatNumberIntoSuffix = (number) => {
   } else if (number >= 1000000) {
     return (number / 1000000).toFixed(2) + "M"; // Convert to million
   } else {
-    return number.toLocaleString(); // Keep the exact number format
+    return number.toLocaleString();
   }
 };
 

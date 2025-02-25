@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 import MainLayout from "./components";
 import { Theme } from "@radix-ui/themes";
 

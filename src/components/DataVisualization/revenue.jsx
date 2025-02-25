@@ -72,7 +72,7 @@ const RevenueChart = () => {
                 value.toLocaleString("en-US", { maximumFractionDigits: 0 })
               }
               nameKey="source"
-              strokeWidth={0.5}
+              strokeWidth={1}
               strokeDasharray={0}
               fillOpacity={0.5}
               className="font-semibold"

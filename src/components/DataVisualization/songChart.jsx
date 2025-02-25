@@ -3,6 +3,7 @@ import {
   BarChart,
   CartesianGrid,
   LabelList,
+  Legend,
   Rectangle,
   ResponsiveContainer,
   XAxis,
@@ -10,6 +11,7 @@ import {
 } from "recharts";
 import { topSortedMostStreamedSongsLast30Days } from "../../utils/dummyData";
 import { formatNumberIntoSuffix } from "../../utils/utils";
+import { Tooltip } from "@radix-ui/themes";
 
 const SongChart = () => {
   const chartDataForTop5Song = topSortedMostStreamedSongsLast30Days.slice(0, 5);
@@ -36,14 +38,16 @@ const SongChart = () => {
               interval={0}
             />
             <YAxis
-              domain={[0, maxTotalStreams * 1.1]} // Set the domain with a 10% buffer
+              domain={[0, maxTotalStreams * 1.1]}
               tickLine={false}
               axisLine={false}
               className="font-medium text-sm"
               tickCount={5}
               fontSize={10}
-              tickFormatter={(value) => formatNumberIntoSuffix(value)} // Add this line
+              tickFormatter={(value) => formatNumberIntoSuffix(value)}
             />
+            <Tooltip />
+            {/* <Legend /> */}
             <Bar
               dataKey="totalStreams"
               fill="#1E5829"

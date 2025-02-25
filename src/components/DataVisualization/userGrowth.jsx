@@ -29,8 +29,14 @@ const UserGrowth = () => {
               dataKey="Active Users"
               stroke="#8884d8"
               activeDot={{ r: 8 }}
+              strokeWidth={2}
             ></Line>
-            <Line type="monotone" dataKey="Total Users" stroke="#82ca9d"></Line>
+            <Line
+              type="monotone"
+              dataKey="Total Users"
+              stroke="#82ca9d"
+              strokeWidth={2}
+            ></Line>
           </LineChart>
         </ResponsiveContainer>
       </div>
