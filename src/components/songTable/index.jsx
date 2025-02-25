@@ -1,7 +1,8 @@
 import { useState, useMemo } from "react";
-import { Table } from "@radix-ui/themes";
+import { Button, Table, TextField } from "@radix-ui/themes";
 import { recentStreams } from "../../utils/dummyData";
-import { FilterIcon } from "lucide-react";
+import { FilterIcon, SearchIcon, X } from "lucide-react";
+import SongSearchInput from "./searchInput";
 
 const TableColumns = [
   { name: "Song Name", id: "songName" },
@@ -16,9 +17,14 @@ const SongTable = () => {
     key: "songName",
     direction: "ascending",
   });
+  const [searchSong, setSearchSong] = useState("");
 
   const sortedStreams = useMemo(() => {
-    const sortedData = [...recentStreams];
+    const filteredData = recentStreams.filter((song) =>
+      song.songName.toLowerCase().includes(searchSong.toLowerCase())
+    );
+    const sortedData = [...filteredData];
+
     sortedData.sort((a, b) => {
       if (a[sortConfig.key] < b[sortConfig.key]) {
         return sortConfig.direction === "ascending" ? -1 : 1;
@@ -29,7 +35,7 @@ const SongTable = () => {
       return 0;
     });
     return sortedData;
-  }, [sortConfig]);
+  }, [sortConfig, searchSong]);
 
   const handleSort = (key) => {
     let direction = "ascending";
@@ -54,8 +60,8 @@ const SongTable = () => {
             Recent Steamed Songs Data Table
           </span>
         </div>
-        <div>
-          {/* <span className="text-gray-400">Showing 1 to 10 of 100 entries</span> */}
+        <div className="flex items-center gap-3">
+          <SongSearchInput setSearchSong={setSearchSong} />
         </div>
       </div>
       <div>

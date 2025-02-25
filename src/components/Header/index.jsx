@@ -1,3 +1,4 @@
+import { memo } from "react";
 import CurrencySelector from "../GenericComponent/CurrencySelector";
 
 const Header = () => {
@@ -11,4 +12,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

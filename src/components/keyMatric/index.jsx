@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { keyMatricsData } from "../../utils/dummyData";
 import KeyMatricsCard from "./matricsCard";
 
@@ -15,4 +16,4 @@ const KeyMatrics = () => {
     </div>
   );
 };
-export default KeyMatrics;
+export default memo(KeyMatrics);

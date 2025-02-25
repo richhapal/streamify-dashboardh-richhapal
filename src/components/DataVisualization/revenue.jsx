@@ -4,7 +4,7 @@ import {
   getRevenueMonths,
   revenueData,
 } from "../../utils/dummyData";
-import { useContext, useMemo, useState } from "react";
+import { memo, useContext, useMemo, useState } from "react";
 import { CurrencyContext } from "../../context";
 import { Button, DropdownMenu } from "@radix-ui/themes";
 
@@ -89,4 +89,4 @@ const RevenueChart = () => {
   );
 };
 
-export default RevenueChart;
+export default memo(RevenueChart);

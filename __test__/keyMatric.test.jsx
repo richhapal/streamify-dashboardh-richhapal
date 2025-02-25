@@ -1,22 +1,33 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-
+import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import KeyMatricsCard from "../src/components/keyMatric/matricsCard";
 import { renderWithContext } from "./test-utils";
-import { formatNumberIntoSuffix } from "../src/utils/utils";
-
-// import KeyMatricsCard from "../src/components/keyMatric/matricsCard";
 
 const mockData = {
   title: "Total Users",
   value: 12345,
-  icon: "UserIcon", // Assuming you have an icon component or string
+  icon: "UserIcon",
 };
 
-test("renders KeyMatricsCard with correct data", () => {
-  renderWithContext(<KeyMatricsCard {...mockData} />);
+const mockDataArtist = {
+  title: "Top Artist",
+};
 
-  // Check if the title is rendered correctly
-  expect(screen.getByText("Total Users")).toBeInTheDocument();
+describe("KeyMatricsCard", () => {
+  test("renders KeyMatricsCard with correct data", async () => {
+    await act(async () => {
+      renderWithContext(<KeyMatricsCard {...mockData} />);
+    });
+
+    expect(screen.getByText("Total Users")).toBeInTheDocument();
+  });
+
+  test("renders KeyMatricsCard with Top Artist", async () => {
+    await act(async () => {
+      renderWithContext(<KeyMatricsCard {...mockDataArtist} />);
+    });
+
+    expect(screen.getByText("Harry Styles")).toBeInTheDocument();
+  });
 });

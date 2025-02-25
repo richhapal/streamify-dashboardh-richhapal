@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { Button, DropdownMenu } from "@radix-ui/themes";
 import { CurrencyContext } from "../../context";
 import { currencyIconMap } from "../../utils/utils";
@@ -29,4 +29,4 @@ const CurrencySelector = () => {
   );
 };
 
-export default CurrencySelector;
+export default memo(CurrencySelector);

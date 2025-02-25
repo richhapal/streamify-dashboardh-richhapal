@@ -7,7 +7,5 @@ module.exports = {
   },
   testEnvironment: "jest-environment-jsdom",
   testPathIgnorePatterns: ["<rootDir>/node_modules/"],
-  transformIgnorePatterns: [
-    "/node_modules/(?!lucide-react)", // Add this line to transform ESM modules in lucide-react
-  ],
+  transformIgnorePatterns: ["/node_modules/(?!lucide-react)"],
 };
